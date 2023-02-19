@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+    <h1></h1>
+        <meta charset="utf-8">
+        <title>Joe's HotDogs</title>
+        <head>
+        <style>
+            f {
+            text-decoration:double; 
+            font-weight: 700; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+            color: rgb(243, 156, 5);
+             opacity: .9;
+             float:center;
+             text-align:center;
+            font-size: 100px;
+            }
+            </style>
+        <style>
+            p {outline-color:rgb(126, 126, 144);}
+          body {
+              background-image: url('Background.jpg');
+            }
+            </style> 
+            <style type ="text/css">
+
+    .white-box{
+        float:center;
+        background-color: rgb(147, 143, 170);
+    color: black;
+    height: 900px; 
+    width:300px;
+
+
+    }
+
+    li a {
+      display: block;
+      font-size: 72px; 
+      text-decoration-color: #080715;
+      color: rgb(154, 160, 182);
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none; color:rgb(0, 0, 0);
+      float: center;
+    }
+    
+
+    .content {
+    opacity: 1;
+    font-size: 16px; 
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none; color:rgb(0, 0, 0);
+    float: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+
+</style>
+        <head>
+            <f>Joe's HotDogs</f>
+    </head>
+    <body>
+<div id = "receipt">
+
+</div>
+            <button onclick="receipt()">Receipt</button>
+    <script> 
+        var hotdogs = prompt("How many hotdogs do you want?");
+        var fries = prompt("How many fries do you want?");
+        var sodas = prompt("How many sodas do you want?");
+
+        function place(num) {
+        num = num.toString();
+        num = num.slice(0, (num.indexOf("."))+3); 
+        return num;
+        }
+    function receipt(){
+
+    var num_hotdogs  = parseInt(hotdogs);
+    var num_fries = parseInt(fries);
+    var num_sodas = parseInt(sodas);
+
+
+
+    
+    
+    var subtotal = (num_hotdogs * 4.00) +(num_fries * 3.50)+(num_sodas * 1.75);
+    if (subtotal > 20){
+        var real_subtotal=(subtotal *.90);
+    }
+    else
+    real_subtotal = place(real_subtotal *1.001);
+    var tax_total = place(real_subtotal *1.0625);
+    console.log(tax_total);
+
+           document.getElementById("receipt").innerHTML += 
+           "<h3>" + "<p> Amount Totals: </p> "+  "</br>" + "HotDogs: " + num_hotdogs +  "</br>" + "Fries: " 
+             + num_fries + "</br>" + "Drinks: " + num_sodas + "</br>"
+             + "Discounted Subtotal(if applicable): $" + real_subtotal + "</br>"
+            +"Tax: 6.25%" + "</br>" + "Total: $"  + tax_total +"</h3>";
+}
